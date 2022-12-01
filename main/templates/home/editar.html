@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% load static %} 
+{% block content %}
+<div class="container text-center">
+    <h1>Qué quieres hacer?</h1>
+</div>
+    <div class="container text-center">
+        <form method="post">
+          {% csrf_token %}
+          <div class="form-group"> {{ form }}</div>
+          <button type="submit" class="btn btn-primary">Editar</button>
+        </form>
+      </div>
+      
+{% endblock content %}
