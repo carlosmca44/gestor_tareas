@@ -9,3 +9,10 @@ class Tarea(models.Model):
 
     def __str__(self):
         return self.tarea
+
+
+class bsElement(models.Model):
+    id_number = models.IntegerField(null=True)
+
+    def __str__(self):
+        return self.id_number.__str__()

@@ -16,4 +16,5 @@ urlpatterns = [
     path('trabajos', views.trabajos, name='trabajos'),
     path('lista', views.lista, name='lista'),
     path('birthday', views.birthday, name='birthday'),
+    path('binary-search', views.binary_searchView, name='binarySearch'),
 ]
