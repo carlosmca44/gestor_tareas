@@ -6,11 +6,15 @@ from django.contrib.auth.models import User
 
 class TareaForm(forms.ModelForm):
 
+    PRIORITIES = [('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5')]
+    prioridad = forms.ChoiceField(choices=PRIORITIES)
+
     class Meta:
         model = Tarea
-        fields = ['tarea', 'fecha_entrega']
+        fields = ['tarea', 'fecha_entrega', 'prioridad']
         widgets = {
-            'fecha_entrega': forms.DateInput(attrs={'type': 'date'})
+            'fecha_entrega': forms.DateInput(attrs={'type': 'date'}),
+            'prioridad': forms.Select(attrs={'class': 'form-select'})
         }
 
 
