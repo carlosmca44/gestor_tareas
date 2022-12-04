@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Tarea
 from .forms import *
 from django.contrib.auth.decorators import login_required
+from .binary_search import binary_seacrh
 
 
 def signIn(request):
@@ -79,4 +80,26 @@ def lista(request):
 def birthday(request):
     return render(request, 'birthday/birthday.html')
 
-# Create your views here.
+
+def binary_searchView(request):
+    tareas = Tarea.objects.filter(user=request.user)
+    tareas_list = []
+    elementToShow = 0
+    for tarea in tareas:
+        tareas_list.append(tarea.id)
+
+    if request.method == "POST":
+        form = binarySearchForm(request.POST)
+        if form.is_valid():
+            form.save()
+            numberToSearch = bsElement.objects.all()
+            for i in numberToSearch:
+                elementToShow = binary_seacrh(tareas_list, i.id_number)
+                bsElement.objects.filter(id_number=i.id_number).delete()
+            if elementToShow != -1:
+                tarea = Tarea.objects.filter(id=tareas_list[elementToShow])
+    else:
+        form = binarySearchForm()
+
+    context = {'form': form, 'tarea': tarea}
+    return render(request, 'binary_search/binary_search.html', context)
