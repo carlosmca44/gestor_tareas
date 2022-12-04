@@ -95,10 +95,9 @@ def binary_searchView(request):
             numberToSearch = bsElement.objects.all()
             for i in numberToSearch:
                 elementToShow = binary_seacrh(tareas_list, i.id_number)
-                toDelete = i.id_number
                 bsElement.objects.filter(id_number=i.id_number).delete()
             if elementToShow != -1:
-                tarea = Tarea.objects.filter(id=elementToShow)
+                tarea = Tarea.objects.filter(id=tareas_list[elementToShow])
     else:
         form = binarySearchForm()
 

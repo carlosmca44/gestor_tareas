@@ -38,5 +38,5 @@ class binarySearchForm(forms.ModelForm):
         fields = ['id_number']
         labels = {'id_number': 'Numero de tarea a buscar'}
         widgets = {
-            'id_number': forms.TextInput(attrs={'type': 'number', 'class': 'form-control'})
+            'id_number': forms.TextInput(attrs={'type': 'number', 'class': 'form-control', 'min': '1'})
         }

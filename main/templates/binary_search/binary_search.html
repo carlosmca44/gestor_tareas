@@ -1,11 +1,12 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
 <section>
-  <div class="d-flex">
-    <h3>Ingrese el numero de la tarea que desea buscar</h3>
+  <div class="d-flex justify-content-center my-3">
     <form action="" method="post">
       {% csrf_token %} {{form}}
-      <button class="btn btn-primary" type="submit">buscar</button>
+      <button class="btn btn-primary mt-2 w-100" type="submit">
+        buscar
+      </button>
     </form>
   </div>
   <div class="container text-center">
@@ -19,23 +20,25 @@
         </tr>
       </thead>
       <tbody>
+        {% for t in tarea.all %}
         <tr>
-          <th scope="row">{{ tarea.id }}</th>
-          <td>{{tarea}}</td>
-          <td>{{tarea.fecha_entrega}}</td>
+          <th scope="row">{{ t.id }}</th>
+          <td>{{t}}</td>
+          <td>{{t.fecha_entrega}}</td>
           <td>
             <a
               class="btn btn-primary btn-sm"
-              href="{% url 'editar' tarea.id %}"
+              href="{% url 'editar' t.id %}"
               >Editar</a
             >
             <a
               class="btn btn-danger btn-sm"
-              href="{% url 'eliminar' tarea.id %}"
+              href="{% url 'eliminar' t.id %}"
               >Eliminar</a
             >
           </td>
         </tr>
+        {% endfor %}
       </tbody>
     </table>
   </div>
