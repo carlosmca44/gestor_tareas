@@ -4,7 +4,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 
 urlpatterns = [
-    path("sign-in/", views.signIn, name="signIn"),
+    path("sign-in/", views.sign_in, name="signIn"),
     path('accounts/login/',
          LoginView.as_view(template_name='auth/login.html'), name='login'),
     path('logout/', LogoutView.as_view(template_name='auth/login.html'), name='logout'),
@@ -16,5 +16,6 @@ urlpatterns = [
     path('trabajos', views.trabajos, name='trabajos'),
     path('lista', views.lista, name='lista'),
     path('birthday', views.birthday, name='birthday'),
-    path('binary-search', views.binary_searchView, name='binarySearch'),
+    path('binary-search', views.binary_search_view, name='binarySearch'),
+    path('hs/', views.heap_sort_view, name='heap')
 ]

@@ -5,16 +5,15 @@ from django.contrib.auth.models import User
 
 
 class TareaForm(forms.ModelForm):
-
     class Meta:
         model = Tarea
-        fields = ['tarea', 'fecha_entrega']
+        fields = ['tarea', 'fecha_entrega', 'prioridad']
         widgets = {
             'fecha_entrega': forms.DateInput(attrs={'type': 'date'})
         }
 
 
-class createUserForm(UserCreationForm):
+class create_user_form(UserCreationForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'username',
