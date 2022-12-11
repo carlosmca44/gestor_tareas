@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Tarea(models.Model):
+    prioridad = models.IntegerField(default=1)
     tarea = models.CharField(max_length=100)
     fecha_entrega = models.DateField(null=True)
     user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
